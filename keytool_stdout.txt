@@ -1,0 +1,69 @@
+Keystore type: PKCS12
+Keystore provider: SUN
+
+Your keystore contains 2 entries
+
+Alias name: alias2
+Creation date: Apr 25, 2019
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=Alice McHacker, OU=Unknown, O=Example Corp, L=Boston, ST=MA, C=US
+Issuer: CN=Alice McHacker, OU=Unknown, O=Example Corp, L=Boston, ST=MA, C=US
+Serial number: 5c017636
+Valid from: Thu Apr 25 23:22:37 EDT 2019 until: Wed Jul 24 23:22:37 EDT 2019
+Certificate fingerprints:
+	 SHA1: FB:AC:36:08:F6:3C:C0:CF:E1:D7:E6:7D:2F:31:BF:BE:5A:C8:7A:C6
+	 SHA256: 73:F1:EC:61:6B:63:93:F5:BE:78:23:A1:79:14:7D:F0:A3:9A:D8:22:99:6B:38:0F:D6:38:AA:93:B5:58:8E:E0
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 17 D4 A3 54 E4 0C DB CC   00 3E 1C 4D 74 B4 DE 55  ...T.....>.Mt..U
+0010: D6 C9 CB 21                                        ...!
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+
+Alias name: alias1
+Creation date: Apr 25, 2019
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=Mallory Root, OU=Unknown, O=Example Corp, L=New York, ST=NY, C=US
+Issuer: CN=Mallory Root, OU=Unknown, O=Example Corp, L=New York, ST=NY, C=US
+Serial number: 2617e8fb
+Valid from: Thu Apr 25 23:22:59 EDT 2019 until: Wed Jul 24 23:22:59 EDT 2019
+Certificate fingerprints:
+	 SHA1: DD:83:42:F3:AD:EB:DC:66:50:DA:7D:D7:59:32:9B:31:0C:E0:90:B9
+	 SHA256: D9:3E:42:47:A1:DB:2F:00:46:F7:58:54:30:D1:83:F5:DD:C6:5D:8B:8B:6B:94:4A:34:B0:0D:D8:6F:7A:6E:B6
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 98 53 CF EF 77 36 02 4D   63 83 D7 4F 06 EF 09 CA  .S..w6.Mc..O....
+0010: 41 92 6D 92                                        A.m.
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

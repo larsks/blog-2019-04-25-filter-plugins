@@ -1,0 +1,75 @@
+---
+- hosts: localhost
+  gather_facts: false
+  vars:
+    storepass: secret
+  tasks:
+    - name: Generate keytool output
+      command: cat keytool_stdout.txt
+      register: keytool
+      changed_when: false
+
+    - name: Parse keytool output using awk
+      command:
+      args:
+        argv:
+          - "awk"
+          - "-F"
+          - ": "
+          - |
+            function print_key(key) {
+              if (not_first_key) print ","
+              not_first_key=1
+              print "{"
+              not_first_line=0
+              for (i in key) {
+                if (not_first_line) print ","
+                not_first_line=1
+                printf "\"%s\": \"%s\"\n", i, key[i]
+              }
+              print "}"
+            }
+            BEGIN {
+              split("", key)
+              print "["
+            }
+
+            /^Alias name/ {
+              if (length(key) > 0) {
+                print_key(key)
+                delete(key)
+              }
+              key["Alias name"] = $2
+            }
+
+            /^Valid from/ {
+              key["Valid from"] = substr($2, 0, length($2)-6)
+              key["Valid until"] = $3
+            }
+
+            /^(Owner|Issuer|Creation date)/ {
+              key[$1] = $2
+            }
+
+            END {
+              if (length(key) > 0) {
+                print_key(key)
+              }
+              print "]"
+            }
+        stdin: "{{ keytool.stdout }}"
+      register: keytool_json
+      changed_when: false
+
+    - name: Create key list variables
+      set_fact:
+        key_list_1: "{{ keytool_json.stdout|from_json }}"
+        key_list_2: "{{ keytool.stdout|keys_to_list }}"
+
+    - name: Show data generated usng awk
+      debug:
+        var: key_list_1
+
+    - name: Show data generated using a filter
+      debug:
+        var: key_list_2
